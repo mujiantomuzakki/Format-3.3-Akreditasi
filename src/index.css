@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  
+  --color-primary-blue: #2F5FA7;
+  --color-secondary-blue: #4A7CC2;
+  --color-soft-bg: #F4F7FB;
+  --color-border-soft: #E2E8F0;
+  --color-text-primary: #1F2937;
+  --color-text-secondary: #6B7280;
+  --color-highlight: #3B82F6;
+}
+
+@layer base {
+  body {
+    @apply bg-soft-bg text-text-primary font-sans;
+  }
+}
+
+.card-section {
+  @apply bg-white rounded-[10px] p-6 shadow-[0_2px_12px_rgba(0,0,0,0.04)] border border-border-soft mb-5;
+}
+
+.input-field {
+  @apply w-full px-4 py-2.5 bg-white border border-border-soft rounded-[10px] text-sm outline-none transition-all focus:border-highlight focus:ring-4 focus:ring-highlight/5 placeholder:text-text-secondary/40;
+}
+
+.btn-primary {
+  @apply bg-primary-blue hover:bg-secondary-blue text-white font-medium px-6 py-2.5 rounded-[10px] transition-all flex items-center justify-center gap-2 shadow-sm active:scale-[0.98];
+}
+
+.btn-secondary {
+  @apply border border-primary-blue text-primary-blue hover:bg-primary-blue/5 font-medium px-6 py-2.5 rounded-[10px] transition-all flex items-center justify-center gap-2 active:scale-[0.98];
+}

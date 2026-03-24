@@ -1,0 +1,57 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "User profile information",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string", "description": "Unique user ID from Firebase Auth" },
+        "displayName": { "type": "string", "description": "User's display name" },
+        "email": { "type": "string", "description": "User's email address" },
+        "photoURL": { "type": "string", "description": "User's profile photo URL" },
+        "role": { "type": "string", "enum": ["admin", "user"], "description": "User's role" },
+        "createdAt": { "type": "string", "format": "date-time", "description": "When the user profile was created" }
+      },
+      "required": ["uid", "email"]
+    },
+    "AnalysisResult": {
+      "title": "AnalysisResult",
+      "description": "Saved analysis results for a school",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string", "description": "Owner's user ID" },
+        "namaAsesor": { "type": "string" },
+        "nia": { "type": "string" },
+        "namaSekolah": { "type": "string" },
+        "npsn": { "type": "string" },
+        "provinsi": { "type": "string" },
+        "results": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "butirId": { "type": "integer" },
+              "indikatorId": { "type": "integer" },
+              "butirText": { "type": "string" },
+              "indikatorText": { "type": "string" },
+              "rekap": { "type": "string" },
+              "visitasi": { "type": "string" }
+            }
+          }
+        },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["uid", "namaSekolah", "npsn", "results", "createdAt"]
+    }
+  },
+  "firestore": {
+    "/users/{uid}": {
+      "schema": "User",
+      "description": "User profiles"
+    },
+    "/analysisResults/{resultId}": {
+      "schema": "AnalysisResult",
+      "description": "Stored analysis results"
+    }
+  }
+}
